@@ -1,5 +1,7 @@
 # onset-serverdebugger
 
+![demonstration](demo.PNG)
+
 **Required:** 
 * [NodeJS](https://nodejs.org/)
 * [Yarn](https://yarnpkg.com/)
