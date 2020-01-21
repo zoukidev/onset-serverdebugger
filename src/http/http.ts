@@ -1,12 +1,22 @@
 import * as express from 'express';
-import * as http from 'http';
+import { Server } from '../server';
+import { Logger } from '../utils/logger';
 
 export class Http {
-    static app: Express.Application;
-    static http: http.Server;
+    static app: express.Express;
 
     static init() {
         Http.app = express();
-        Http.http = http.createServer(Http.app);
+        Http.loadHandlers();
+    }
+
+    static loadHandlers() {
+        Http.app.get('/', (req: express.Request, res: express.Response) => Logger.log(req.query));
+    }
+
+    static listen() {
+        Http.app.listen(Server.config.port, Server.config.host, function() {
+            console.log(`Server listening on ${Server.config.host}:${Server.config.port}`);
+        });
     }
 }

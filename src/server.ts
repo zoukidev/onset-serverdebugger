@@ -1,6 +1,5 @@
 import { Config } from './utils/config';
 import { Http } from './http/http';
-import { WebSocket } from './http/ws';
 import { IConfig } from './interfaces/config';
 
 export class Server {
@@ -12,10 +11,9 @@ export class Server {
 
     static start() {
         Server.loadConfig();
-        
+
         Http.init();
-        WebSocket.init();
-        WebSocket.listen();
+        Http.listen();
     }
 }
 
